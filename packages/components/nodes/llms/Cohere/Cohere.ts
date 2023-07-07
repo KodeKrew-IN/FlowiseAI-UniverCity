@@ -1,6 +1,6 @@
 import { INode, INodeData, INodeParams } from '../../../src/Interface'
 import { getBaseClasses } from '../../../src/utils'
-import { Cohere, CohereInput } from 'langchain/llms/cohere'
+import { Cohere, CohereInput } from './core'
 
 class Cohere_LLMs implements INode {
     label: string
@@ -87,7 +87,7 @@ class Cohere_LLMs implements INode {
 
         if (maxTokens) obj.maxTokens = parseInt(maxTokens, 10)
         if (modelName) obj.model = modelName
-        if (temperature) obj.temperature = parseInt(temperature, 10)
+        if (temperature) obj.temperature = parseFloat(temperature)
 
         const model = new Cohere(obj)
         return model
